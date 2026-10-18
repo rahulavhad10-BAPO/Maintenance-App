@@ -490,9 +490,9 @@ ON CONFLICT (id) DO NOTHING;
 -- 9. Contractors
 INSERT INTO contractors (id, organization_id, user_id, company_name, contact_name, email, phone, service_categories, eligible_project_ids, is_assignment_eligible)
 VALUES
-    ('ca111111-1111-1111-1111-111111111111', '11111111-1111-1111-1111-111111111111', '00000000-0000-0000-0000-000000000004', 'VoltPro Electrical Services', 'Rajesh Kumar', 'contractor@voltpro.com', '+91 98111 22334', ARRAY['Electrical'], ARRAY['aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa', 'bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb'], TRUE),
-    ('ca222222-2222-2222-2222-222222222222', '11111111-1111-1111-1111-111111111111', '00000000-0000-0000-0000-000000000006', 'HydroFlow Plumbing Solutions', 'Suresh Patel', 'contractor@hydroflow.com', '+91 98333 44556', ARRAY['Plumbing', 'Waterproofing and leakage'], ARRAY['aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa'], TRUE),
-    ('ca333333-3333-3333-3333-333333333333', '11111111-1111-1111-1111-111111111111', NULL, 'SturdyBuild Civil & Waterproofing', 'Mahesh Rathi', 'mahesh@sturdybuild.in', '+91 98444 77889', ARRAY['Civil work and cracks', 'Waterproofing and leakage', 'Painting and finishing'], ARRAY['aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa'], TRUE)
+    ('ca111111-1111-1111-1111-111111111111', '11111111-1111-1111-1111-111111111111', '00000000-0000-0000-0000-000000000004', 'VoltPro Electrical Services', 'Rajesh Kumar', 'contractor@voltpro.com', '+91 98111 22334', ARRAY['Electrical'], ARRAY['aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa', 'bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb']::uuid[], TRUE),
+    ('ca222222-2222-2222-2222-222222222222', '11111111-1111-1111-1111-111111111111', '00000000-0000-0000-0000-000000000006', 'HydroFlow Plumbing Solutions', 'Suresh Patel', 'contractor@hydroflow.com', '+91 98333 44556', ARRAY['Plumbing', 'Waterproofing and leakage'], ARRAY['aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa']::uuid[], TRUE),
+    ('ca333333-3333-3333-3333-333333333333', '11111111-1111-1111-1111-111111111111', NULL, 'SturdyBuild Civil & Waterproofing', 'Mahesh Rathi', 'mahesh@sturdybuild.in', '+91 98444 77889', ARRAY['Civil work and cracks', 'Waterproofing and leakage', 'Painting and finishing'], ARRAY['aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa']::uuid[], TRUE)
 ON CONFLICT (id) DO NOTHING;
 
 -- 10. Sample Complaints Illustrating the Complete End-to-End Workflow
