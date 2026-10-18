@@ -1,4 +1,4 @@
--- ============================================================================
+﻿-- ============================================================================
 -- 004_seed_data.sql
 -- Demonstration Dataset with Realistic Builder Projects, Flats, Users,
 -- Contractors, Complaints, Quotations, and Historical Activity Logs
@@ -64,8 +64,8 @@ ON CONFLICT (id) DO NOTHING;
 -- 7. Flat Residents (Secure linking of resident account to flat)
 INSERT INTO flat_residents (id, organization_id, flat_id, resident_id, is_primary_owner, link_status)
 VALUES
-    ('fr111111-1111-1111-1111-111111111111', '11111111-1111-1111-1111-111111111111', 'f1111111-1111-1111-1111-111111111111', '00000000-0000-0000-0000-000000000005', TRUE, 'active'),
-    ('fr222222-2222-2222-2222-222222222222', '11111111-1111-1111-1111-111111111111', 'f2222222-2222-2222-2222-222222222222', '00000000-0000-0000-0000-000000000005', FALSE, 'active')
+    ('fa111111-1111-1111-1111-111111111111', '11111111-1111-1111-1111-111111111111', 'f1111111-1111-1111-1111-111111111111', '00000000-0000-0000-0000-000000000005', TRUE, 'active'),
+    ('fa222222-2222-2222-2222-222222222222', '11111111-1111-1111-1111-111111111111', 'f2222222-2222-2222-2222-222222222222', '00000000-0000-0000-0000-000000000005', FALSE, 'active')
 ON CONFLICT (id) DO NOTHING;
 
 -- 8. Maintenance Categories
@@ -84,9 +84,9 @@ ON CONFLICT (id) DO NOTHING;
 -- 9. Contractors
 INSERT INTO contractors (id, organization_id, user_id, company_name, contact_name, email, phone, service_categories, eligible_project_ids, is_assignment_eligible)
 VALUES
-    ('cnt11111-1111-1111-1111-111111111111', '11111111-1111-1111-1111-111111111111', '00000000-0000-0000-0000-000000000004', 'VoltPro Electrical Services', 'Rajesh Kumar', 'contractor@voltpro.com', '+91 98111 22334', ARRAY['Electrical'], ARRAY['aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa', 'bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb'], TRUE),
-    ('cnt22222-2222-2222-2222-222222222222', '11111111-1111-1111-1111-111111111111', '00000000-0000-0000-0000-000000000006', 'HydroFlow Plumbing Solutions', 'Suresh Patel', 'contractor@hydroflow.com', '+91 98333 44556', ARRAY['Plumbing', 'Waterproofing and leakage'], ARRAY['aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa'], TRUE),
-    ('cnt33333-3333-3333-3333-333333333333', '11111111-1111-1111-1111-111111111111', NULL, 'SturdyBuild Civil & Waterproofing', 'Mahesh Rathi', 'mahesh@sturdybuild.in', '+91 98444 77889', ARRAY['Civil work and cracks', 'Waterproofing and leakage', 'Painting and finishing'], ARRAY['aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa'], TRUE)
+    ('ca111111-1111-1111-1111-111111111111', '11111111-1111-1111-1111-111111111111', '00000000-0000-0000-0000-000000000004', 'VoltPro Electrical Services', 'Rajesh Kumar', 'contractor@voltpro.com', '+91 98111 22334', ARRAY['Electrical'], ARRAY['aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa', 'bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb'], TRUE),
+    ('ca222222-2222-2222-2222-222222222222', '11111111-1111-1111-1111-111111111111', '00000000-0000-0000-0000-000000000006', 'HydroFlow Plumbing Solutions', 'Suresh Patel', 'contractor@hydroflow.com', '+91 98333 44556', ARRAY['Plumbing', 'Waterproofing and leakage'], ARRAY['aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa'], TRUE),
+    ('ca333333-3333-3333-3333-333333333333', '11111111-1111-1111-1111-111111111111', NULL, 'SturdyBuild Civil & Waterproofing', 'Mahesh Rathi', 'mahesh@sturdybuild.in', '+91 98444 77889', ARRAY['Civil work and cracks', 'Waterproofing and leakage', 'Painting and finishing'], ARRAY['aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa'], TRUE)
 ON CONFLICT (id) DO NOTHING;
 
 -- 10. Sample Complaints Illustrating the Complete End-to-End Workflow
@@ -97,7 +97,7 @@ INSERT INTO complaints (
     title, description, category_id, subcategory, priority, source_channel,
     coverage_result, status, preferred_visit_time, created_at
 ) VALUES (
-    'cmp11111-1111-1111-1111-111111111111',
+    'cb111111-1111-1111-1111-111111111111',
     '11111111-1111-1111-1111-111111111111',
     'CMP-2026-0001',
     'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa',
@@ -123,7 +123,7 @@ INSERT INTO complaints (
     title, description, category_id, subcategory, priority, source_channel,
     coverage_result, status, assigned_contractor_id, created_at
 ) VALUES (
-    'cmp22222-2222-2222-2222-222222222222',
+    'cb222222-2222-2222-2222-222222222222',
     '11111111-1111-1111-1111-111111111111',
     'CMP-2026-0002',
     'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa',
@@ -138,7 +138,7 @@ INSERT INTO complaints (
     'web_portal',
     'within_coverage',
     'awaiting_approval',
-    'cnt11111-1111-1111-1111-111111111111',
+    'ca111111-1111-1111-1111-111111111111',
     NOW() - INTERVAL '4 days'
 ) ON CONFLICT (id) DO NOTHING;
 
@@ -148,10 +148,10 @@ INSERT INTO quotations (
     labour_charges, material_costs, taxes, other_charges, total_amount, currency,
     work_description, estimated_duration_days, status, threshold_applied, created_at
 ) VALUES (
-    'q2222222-2222-2222-2222-222222222222',
+    'ce222222-2222-2222-2222-222222222222',
     '11111111-1111-1111-1111-111111111111',
-    'cmp22222-2222-2222-2222-222222222222',
-    'cnt11111-1111-1111-1111-111111111111',
+    'cb222222-2222-2222-2222-222222222222',
+    'ca111111-1111-1111-1111-111111111111',
     'QUO-2026-0104',
     2500.00,
     4200.00,
@@ -173,7 +173,7 @@ INSERT INTO complaints (
     title, description, category_id, subcategory, priority, source_channel,
     coverage_result, status, assigned_contractor_id, created_at
 ) VALUES (
-    'cmp33333-3333-3333-3333-333333333333',
+    'cb333333-3333-3333-3333-333333333333',
     '11111111-1111-1111-1111-111111111111',
     'CMP-2026-0003',
     'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa',
@@ -188,7 +188,7 @@ INSERT INTO complaints (
     'web_portal',
     'within_coverage',
     'work_in_progress',
-    'cnt11111-1111-1111-1111-111111111111',
+    'ca111111-1111-1111-1111-111111111111',
     NOW() - INTERVAL '6 days'
 ) ON CONFLICT (id) DO NOTHING;
 
@@ -198,10 +198,10 @@ INSERT INTO quotations (
     labour_charges, material_costs, taxes, other_charges, total_amount, currency,
     work_description, estimated_duration_days, status, threshold_applied, created_at
 ) VALUES (
-    'q3333333-3333-3333-3333-333333333333',
+    'ce333333-3333-3333-3333-333333333333',
     '11111111-1111-1111-1111-111111111111',
-    'cmp33333-3333-3333-3333-333333333333',
-    'cnt11111-1111-1111-1111-111111111111',
+    'cb333333-3333-3333-3333-333333333333',
+    'ca111111-1111-1111-1111-111111111111',
     'QUO-2026-0098',
     1200.00,
     1800.00,
@@ -220,9 +220,9 @@ INSERT INTO quotations (
 INSERT INTO quotation_approvals (
     id, organization_id, quotation_id, approver_id, decision, decision_reason, threshold_applied, policy_notes
 ) VALUES (
-    'qa333333-3333-3333-3333-333333333333',
+    'ea333333-3333-3333-3333-333333333333',
     '11111111-1111-1111-1111-111111111111',
-    'q3333333-3333-3333-3333-333333333333',
+    'ce333333-3333-3333-3333-333333333333',
     '00000000-0000-0000-0000-000000000002',
     'approved_under_threshold',
     'Amount is below the 5,000 INR threshold and fully compliant with project warranty scope.',
@@ -236,7 +236,7 @@ INSERT INTO complaints (
     title, description, category_id, subcategory, priority, source_channel,
     coverage_result, status, assigned_contractor_id, completed_at, completion_notes, created_at
 ) VALUES (
-    'cmp44444-4444-4444-4444-444444444444',
+    'cb444444-4444-4444-4444-444444444444',
     '11111111-1111-1111-1111-111111111111',
     'CMP-2026-0004',
     'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa',
@@ -251,7 +251,7 @@ INSERT INTO complaints (
     'web_portal',
     'within_coverage',
     'awaiting_resident_confirmation',
-    'cnt22222-2222-2222-2222-222222222222',
+    'ca222222-2222-2222-2222-222222222222',
     NOW() - INTERVAL '5 hours',
     'Injected waterproof polymer resin around the external exhaust pipe flashing. Gypsum patch sealed and touch-up primer applied.',
     NOW() - INTERVAL '8 days'
@@ -261,17 +261,17 @@ INSERT INTO complaints (
 INSERT INTO complaint_activity_logs (
     organization_id, complaint_id, actor_id, actor_name, actor_role, action, old_status, new_status, notes, created_at
 ) VALUES
-    ('11111111-1111-1111-1111-111111111111', 'cmp11111-1111-1111-1111-111111111111', '00000000-0000-0000-0000-000000000005', 'Rahul Verma', 'resident', 'complaint_created', NULL, 'new', 'Complaint submitted via Resident Portal. Verified flat A-402 is within active 24-month maintenance period.', NOW() - INTERVAL '2 days'),
-    ('11111111-1111-1111-1111-111111111111', 'cmp22222-2222-2222-2222-222222222222', '00000000-0000-0000-0000-000000000002', 'Vikram Malhotra', 'builder_admin', 'contractor_assigned', 'new', 'assigned', 'Assigned to VoltPro Electrical Services.', NOW() - INTERVAL '3 days'),
-    ('11111111-1111-1111-1111-111111111111', 'cmp22222-2222-2222-2222-222222222222', '00000000-0000-0000-0000-000000000004', 'Rajesh Kumar', 'contractor', 'quotation_submitted', 'inspection_completed', 'awaiting_approval', 'Quotation of 7,800 INR submitted. Strictly exceeds project threshold of 5,000 INR -> Sent to Builder Admin queue.', NOW() - INTERVAL '1 day'),
-    ('11111111-1111-1111-1111-111111111111', 'cmp33333-3333-3333-3333-333333333333', '00000000-0000-0000-0000-000000000002', 'Vikram Malhotra', 'builder_admin', 'quotation_approved_under_threshold', 'awaiting_approval', 'authorized_to_proceed', 'Approved Under Threshold (3,400 INR <= 5,000 INR). Work authorized to begin.', NOW() - INTERVAL '3 days'),
-    ('11111111-1111-1111-1111-111111111111', 'cmp44444-4444-4444-4444-444444444444', '00000000-0000-0000-0000-000000000006', 'Suresh Patel', 'contractor', 'work_completed', 'work_in_progress', 'awaiting_resident_confirmation', 'Work completed with photographic proof uploaded. Awaiting flat owner sign-off.', NOW() - INTERVAL '5 hours')
+    ('11111111-1111-1111-1111-111111111111', 'cb111111-1111-1111-1111-111111111111', '00000000-0000-0000-0000-000000000005', 'Rahul Verma', 'resident', 'complaint_created', NULL, 'new', 'Complaint submitted via Resident Portal. Verified flat A-402 is within active 24-month maintenance period.', NOW() - INTERVAL '2 days'),
+    ('11111111-1111-1111-1111-111111111111', 'cb222222-2222-2222-2222-222222222222', '00000000-0000-0000-0000-000000000002', 'Vikram Malhotra', 'builder_admin', 'contractor_assigned', 'new', 'assigned', 'Assigned to VoltPro Electrical Services.', NOW() - INTERVAL '3 days'),
+    ('11111111-1111-1111-1111-111111111111', 'cb222222-2222-2222-2222-222222222222', '00000000-0000-0000-0000-000000000004', 'Rajesh Kumar', 'contractor', 'quotation_submitted', 'inspection_completed', 'awaiting_approval', 'Quotation of 7,800 INR submitted. Strictly exceeds project threshold of 5,000 INR -> Sent to Builder Admin queue.', NOW() - INTERVAL '1 day'),
+    ('11111111-1111-1111-1111-111111111111', 'cb333333-3333-3333-3333-333333333333', '00000000-0000-0000-0000-000000000002', 'Vikram Malhotra', 'builder_admin', 'quotation_approved_under_threshold', 'awaiting_approval', 'authorized_to_proceed', 'Approved Under Threshold (3,400 INR <= 5,000 INR). Work authorized to begin.', NOW() - INTERVAL '3 days'),
+    ('11111111-1111-1111-1111-111111111111', 'cb444444-4444-4444-4444-444444444444', '00000000-0000-0000-0000-000000000006', 'Suresh Patel', 'contractor', 'work_completed', 'work_in_progress', 'awaiting_resident_confirmation', 'Work completed with photographic proof uploaded. Awaiting flat owner sign-off.', NOW() - INTERVAL '5 hours')
 ON CONFLICT DO NOTHING;
 
 -- In-App Notifications
 INSERT INTO notification_logs (
     organization_id, recipient_id, title, message, notification_type, channel, complaint_id, is_read, created_at
 ) VALUES
-    ('11111111-1111-1111-1111-111111111111', '00000000-0000-0000-0000-000000000002', 'Quotation Exceeds Threshold', 'Quotation #QUO-2026-0104 for 7,800 INR requires builder approval (> 5,000 INR threshold).', 'quotation_approval_required', 'in_app', 'cmp22222-2222-2222-2222-222222222222', FALSE, NOW() - INTERVAL '1 day'),
-    ('11111111-1111-1111-1111-111111111111', '00000000-0000-0000-0000-000000000005', 'Maintenance Work Completed', 'HydroFlow Plumbing has marked repair for Complaint CMP-2026-0004 as finished. Please verify.', 'work_completed', 'in_app', 'cmp44444-4444-4444-4444-444444444444', FALSE, NOW() - INTERVAL '5 hours')
+    ('11111111-1111-1111-1111-111111111111', '00000000-0000-0000-0000-000000000002', 'Quotation Exceeds Threshold', 'Quotation #QUO-2026-0104 for 7,800 INR requires builder approval (> 5,000 INR threshold).', 'quotation_approval_required', 'in_app', 'cb222222-2222-2222-2222-222222222222', FALSE, NOW() - INTERVAL '1 day'),
+    ('11111111-1111-1111-1111-111111111111', '00000000-0000-0000-0000-000000000005', 'Maintenance Work Completed', 'HydroFlow Plumbing has marked repair for Complaint CMP-2026-0004 as finished. Please verify.', 'work_completed', 'in_app', 'cb444444-4444-4444-4444-444444444444', FALSE, NOW() - INTERVAL '5 hours')
 ON CONFLICT DO NOTHING;

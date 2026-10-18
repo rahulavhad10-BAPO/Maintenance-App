@@ -94,8 +94,8 @@ const getInitialData = (): AppState => {
   const flatId2 = 'f2222222-2222-2222-2222-222222222222';
   const flatId3 = 'f3333333-3333-3333-3333-333333333333';
   const residentId = '00000000-0000-0000-0000-000000000005';
-  const contractorId1 = 'cnt11111-1111-1111-1111-111111111111';
-  const contractorId2 = 'cnt22222-2222-2222-2222-222222222222';
+  const contractorId1 = 'ca111111-1111-1111-1111-111111111111';
+  const contractorId2 = 'ca222222-2222-2222-2222-222222222222';
   const adminId = '00000000-0000-0000-0000-000000000002';
 
   const organizations: Organization[] = [
@@ -278,7 +278,7 @@ const getInitialData = (): AppState => {
 
   const flatResidents: FlatResident[] = [
     {
-      id: 'fr111111-1111-1111-1111-111111111111',
+      id: 'fa111111-1111-1111-1111-111111111111',
       organization_id: orgId,
       flat_id: flatId1,
       resident_id: residentId,
@@ -287,7 +287,7 @@ const getInitialData = (): AppState => {
       linked_at: new Date(Date.now() - 30 * 86400000).toISOString(),
     },
     {
-      id: 'fr222222-2222-2222-2222-222222222222',
+      id: 'fa222222-2222-2222-2222-222222222222',
       organization_id: orgId,
       flat_id: flatId2,
       resident_id: residentId,
@@ -338,7 +338,7 @@ const getInitialData = (): AppState => {
       created_at: new Date().toISOString(),
     },
     {
-      id: 'cnt33333-3333-3333-3333-333333333333',
+      id: 'ca333333-3333-3333-3333-333333333333',
       organization_id: orgId,
       company_name: 'SturdyBuild Civil & Waterproofing',
       contact_name: 'Mahesh Rathi',
