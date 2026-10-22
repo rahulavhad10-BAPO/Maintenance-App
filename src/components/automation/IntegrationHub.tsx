@@ -37,8 +37,8 @@ export const IntegrationHub: React.FC = () => {
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-xs">
-        <div className="flex items-center space-x-2">
+      <div className="bg-white p-4 sm:p-6 rounded-2xl border border-slate-200 shadow-xs">
+        <div className="flex flex-wrap items-center gap-2">
           <span className="text-xs font-bold text-indigo-700 bg-indigo-50 px-2.5 py-0.5 rounded-full border border-indigo-200 flex items-center gap-1">
             <Workflow className="w-3.5 h-3.5" /> Architecture Specification & Event Bus
           </span>
@@ -117,16 +117,16 @@ export const IntegrationHub: React.FC = () => {
 
       {/* Idempotent Workflow Events Log */}
       <div className="bg-white rounded-2xl border border-slate-200 shadow-xs p-6 space-y-4">
-        <div className="flex items-center justify-between">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2">
           <div>
             <h2 className="text-sm font-bold text-slate-900 flex items-center gap-2">
-              <FileCode className="w-4 h-4 text-indigo-600" /> Idempotent Event Log Queue (`workflow_events`)
+              <FileCode className="w-4 h-4 text-indigo-600 shrink-0" /> Idempotent Event Log Queue (`workflow_events`)
             </h2>
             <p className="text-xs text-slate-500">
-              Real events emitted by user actions ready for n8n polling or webhook webhooks without duplication.
+              Real events emitted by user actions ready for n8n polling or webhook triggers without duplication.
             </p>
           </div>
-          <span className="text-xs text-slate-400 font-mono">{events.length} Recorded Events</span>
+          <span className="text-xs text-slate-400 font-mono whitespace-nowrap">{events.length} Recorded Events</span>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">

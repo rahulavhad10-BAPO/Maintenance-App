@@ -134,9 +134,59 @@ export const FlatManager: React.FC = () => {
         </div>
       </div>
 
-      {/* Flats Table */}
+      {/* Flats Container */}
       <div className="bg-white rounded-2xl border border-slate-200 shadow-xs overflow-hidden">
-        <div className="overflow-x-auto">
+        {/* Mobile Card View (Visible on screens < md) */}
+        <div className="md:hidden divide-y divide-slate-100">
+          {filteredFlats.length === 0 ? (
+            <div className="py-10 text-center text-xs text-slate-400">
+              No flats registered yet for this project.
+            </div>
+          ) : (
+            filteredFlats.map(flat => {
+              const isExpired = new Date(flat.calculated_maintenance_end_date) < new Date();
+              const daysRemaining = Math.round(
+                (new Date(flat.calculated_maintenance_end_date).getTime() - Date.now()) / (1000 * 3600 * 24)
+              );
+
+              return (
+                <div key={flat.id} className="p-4 space-y-2.5">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <span className="font-extrabold text-slate-900 text-base">Unit {flat.flat_number}</span>
+                      <span className="text-xs text-slate-500 block">
+                        {flat.building?.name} • Floor {flat.floor_number}
+                      </span>
+                    </div>
+                    {isExpired ? (
+                      <span className="inline-flex items-center gap-1 text-rose-700 bg-rose-50 border border-rose-200 px-2 py-0.5 rounded-full text-[11px] font-semibold">
+                        <ShieldAlert className="w-3 h-3" /> Expired
+                      </span>
+                    ) : (
+                      <span className="inline-flex items-center gap-1 text-emerald-700 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded-full text-[11px] font-semibold">
+                        <ShieldCheck className="w-3 h-3" /> {daysRemaining}d left
+                      </span>
+                    )}
+                  </div>
+
+                  <div className="grid grid-cols-2 gap-2 bg-slate-50 p-2.5 rounded-lg border border-slate-100 text-[11px]">
+                    <div>
+                      <span className="text-slate-400 block">Handover:</span>
+                      <span className="font-mono font-medium text-slate-800">{flat.possession_date}</span>
+                    </div>
+                    <div>
+                      <span className="text-slate-400 block">Warranty Ends:</span>
+                      <span className="font-mono font-bold text-indigo-700">{flat.calculated_maintenance_end_date}</span>
+                    </div>
+                  </div>
+                </div>
+              );
+            })
+          )}
+        </div>
+
+        {/* Desktop Table (Hidden on screens < md) */}
+        <div className="hidden md:block overflow-x-auto">
           <table className="w-full text-left text-xs">
             <thead className="bg-slate-50 border-b border-slate-200 text-slate-500 font-semibold uppercase tracking-wider">
               <tr>
@@ -194,8 +244,8 @@ export const FlatManager: React.FC = () => {
 
       {/* Modal: Add Flat */}
       {showModal && (
-        <div className="fixed inset-0 z-50 bg-slate-900/40 backdrop-blur-xs flex items-center justify-center p-4">
-          <div className="bg-white rounded-2xl shadow-2xl max-w-md w-full p-6 space-y-4 animate-in zoom-in-95 duration-150">
+        <div className="fixed inset-0 z-50 bg-slate-900/40 backdrop-blur-xs flex items-center justify-center p-3 sm:p-4">
+          <div className="bg-white rounded-2xl shadow-2xl max-w-md w-full p-4 sm:p-6 space-y-4 max-h-[90vh] overflow-y-auto animate-in zoom-in-95 duration-150">
             <div className="flex justify-between items-center border-b border-slate-100 pb-3">
               <h3 className="font-bold text-slate-900 text-sm">Register Flat & Handover Record</h3>
               <button onClick={() => setShowModal(false)} className="text-slate-400 hover:text-slate-700">✕</button>

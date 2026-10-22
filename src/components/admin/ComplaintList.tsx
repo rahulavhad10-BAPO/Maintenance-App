@@ -124,7 +124,7 @@ export const ComplaintList: React.FC<ComplaintListProps> = ({
         </div>
 
         {/* Dropdown Filters Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-2.5 pt-1">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-2.5 pt-1">
           {/* Project */}
           <select
             value={selectedProject}
@@ -214,9 +214,61 @@ export const ComplaintList: React.FC<ComplaintListProps> = ({
         </div>
       </div>
 
-      {/* Table */}
+      {/* Complaints Container */}
       <div className="bg-white rounded-2xl border border-slate-200 shadow-xs overflow-hidden">
-        <div className="overflow-x-auto">
+        {/* Mobile Cards View (Visible on screens < md) */}
+        <div className="md:hidden divide-y divide-slate-100">
+          {filtered.length === 0 ? (
+            <div className="py-10 text-center text-xs text-slate-400">
+              No complaints match the specified filters.
+            </div>
+          ) : (
+            filtered.map(comp => (
+              <div
+                key={comp.id}
+                onClick={() => onSelectComplaint(comp)}
+                className="p-4 space-y-2.5 active:bg-slate-50 cursor-pointer transition-colors"
+              >
+                <div className="flex items-center justify-between gap-2">
+                  <span className="font-mono font-bold text-xs text-indigo-700 bg-indigo-50 px-2 py-0.5 rounded border border-indigo-200">
+                    {comp.complaint_reference}
+                  </span>
+                  <div className="flex items-center gap-1.5 flex-wrap justify-end">
+                    <StatusBadge priority={comp.priority} />
+                    <StatusBadge status={comp.status} />
+                  </div>
+                </div>
+
+                <div>
+                  <h4 className="font-bold text-slate-900 text-sm leading-snug">{comp.title}</h4>
+                  <p className="text-xs text-slate-500 mt-1 flex items-center gap-1.5 flex-wrap">
+                    <span className="font-semibold text-slate-700">Unit {comp.flat?.flat_number || 'N/A'}</span>
+                    <span>•</span>
+                    <span>{comp.building?.name}</span>
+                    <span>•</span>
+                    <span>{comp.category?.name}</span>
+                  </p>
+                </div>
+
+                <div className="flex items-center justify-between text-xs pt-1 border-t border-slate-100 text-slate-500">
+                  <div>
+                    <StatusBadge coverage={comp.coverage_result} />
+                  </div>
+                  <div className="text-[11px] text-right">
+                    {comp.contractor ? (
+                      <span className="text-slate-700 font-medium">{comp.contractor.company_name}</span>
+                    ) : (
+                      <span className="text-amber-600 bg-amber-50 px-1.5 py-0.5 rounded border border-amber-200">Unassigned</span>
+                    )}
+                  </div>
+                </div>
+              </div>
+            ))
+          )}
+        </div>
+
+        {/* Desktop Table (Hidden on screens < md) */}
+        <div className="hidden md:block overflow-x-auto">
           <table className="w-full text-left text-xs">
             <thead className="bg-slate-50 border-b border-slate-200 text-slate-500 font-semibold uppercase tracking-wider">
               <tr>

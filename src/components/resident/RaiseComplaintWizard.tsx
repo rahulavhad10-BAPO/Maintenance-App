@@ -156,44 +156,44 @@ export const RaiseComplaintWizard: React.FC<RaiseComplaintWizardProps> = ({
         </p>
 
         {/* Step Indicators */}
-        <div className="grid grid-cols-3 gap-2 mt-6">
+        <div className="grid grid-cols-3 gap-1.5 sm:gap-2 mt-4 sm:mt-6">
           <div
-            className={`p-2 rounded-lg text-xs font-semibold flex items-center gap-2 ${
+            className={`p-2 rounded-lg text-xs font-semibold flex items-center gap-1.5 sm:gap-2 justify-center sm:justify-start ${
               step >= 1 ? 'bg-white/20 text-white' : 'bg-white/10 text-white/60'
             }`}
           >
-            <span className="w-5 h-5 rounded-full bg-white text-indigo-600 flex items-center justify-center text-[11px] font-bold">
+            <span className="w-5 h-5 rounded-full bg-white text-indigo-600 flex items-center justify-center text-[11px] font-bold shrink-0">
               1
             </span>
-            <span>Select Flat & Warranty</span>
+            <span className="truncate text-[11px] sm:text-xs"><span className="hidden sm:inline">Select </span>Flat</span>
           </div>
 
           <div
-            className={`p-2 rounded-lg text-xs font-semibold flex items-center gap-2 ${
+            className={`p-2 rounded-lg text-xs font-semibold flex items-center gap-1.5 sm:gap-2 justify-center sm:justify-start ${
               step >= 2 ? 'bg-white/20 text-white' : 'bg-white/10 text-white/60'
             }`}
           >
-            <span className="w-5 h-5 rounded-full bg-white text-indigo-600 flex items-center justify-center text-[11px] font-bold">
+            <span className="w-5 h-5 rounded-full bg-white text-indigo-600 flex items-center justify-center text-[11px] font-bold shrink-0">
               2
             </span>
-            <span>Issue Details</span>
+            <span className="truncate text-[11px] sm:text-xs">Issue<span className="hidden sm:inline"> Details</span></span>
           </div>
 
           <div
-            className={`p-2 rounded-lg text-xs font-semibold flex items-center gap-2 ${
+            className={`p-2 rounded-lg text-xs font-semibold flex items-center gap-1.5 sm:gap-2 justify-center sm:justify-start ${
               step >= 3 ? 'bg-white/20 text-white' : 'bg-white/10 text-white/60'
             }`}
           >
-            <span className="w-5 h-5 rounded-full bg-white text-indigo-600 flex items-center justify-center text-[11px] font-bold">
+            <span className="w-5 h-5 rounded-full bg-white text-indigo-600 flex items-center justify-center text-[11px] font-bold shrink-0">
               3
             </span>
-            <span>Evidence & Submit</span>
+            <span className="truncate text-[11px] sm:text-xs">Submit</span>
           </div>
         </div>
       </div>
 
       {/* Step Body */}
-      <div className="p-6 space-y-6">
+      <div className="p-4 sm:p-6 space-y-6">
         {/* STEP 1: Flat Selection & Warranty Assessment Preview */}
         {step === 1 && (
           <div className="space-y-4">

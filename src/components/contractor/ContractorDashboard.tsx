@@ -227,7 +227,7 @@ export const ContractorDashboard: React.FC = () => {
       </div>
 
       {/* Navigation Tabs */}
-      <div className="flex border-b border-slate-200 space-x-2 text-xs font-semibold overflow-x-auto">
+      <div className="flex border-b border-slate-200 space-x-2 text-xs font-semibold overflow-x-auto whitespace-nowrap pb-1 -mx-2 px-2 sm:mx-0 sm:px-0">
         <button
           onClick={() => setActiveTab('assigned')}
           className={`pb-3 px-3 transition-colors border-b-2 ${
@@ -408,8 +408,8 @@ export const ContractorDashboard: React.FC = () => {
 
       {/* MODAL 1: Record Site Visit & Inspection */}
       {showVisitModal && selectedComplaint && (
-        <div className="fixed inset-0 z-50 bg-slate-900/40 backdrop-blur-xs flex items-center justify-center p-4">
-          <div className="bg-white rounded-2xl shadow-2xl max-w-lg w-full p-6 space-y-4 animate-in zoom-in-95 duration-150">
+        <div className="fixed inset-0 z-50 bg-slate-900/40 backdrop-blur-xs flex items-center justify-center p-3 sm:p-4">
+          <div className="bg-white rounded-2xl shadow-2xl max-w-lg w-full p-4 sm:p-6 space-y-4 max-h-[90vh] overflow-y-auto animate-in zoom-in-95 duration-150">
             <div className="flex justify-between items-center border-b border-slate-100 pb-3">
               <h3 className="font-bold text-slate-900 text-sm">
                 Record Site Inspection — {selectedComplaint.complaint_reference}
@@ -493,8 +493,8 @@ export const ContractorDashboard: React.FC = () => {
 
       {/* MODAL 2: Submit Quotation */}
       {showQuotationModal && selectedComplaint && (
-        <div className="fixed inset-0 z-50 bg-slate-900/40 backdrop-blur-xs flex items-center justify-center p-4">
-          <div className="bg-white rounded-2xl shadow-2xl max-w-lg w-full p-6 space-y-4 animate-in zoom-in-95 duration-150">
+        <div className="fixed inset-0 z-50 bg-slate-900/40 backdrop-blur-xs flex items-center justify-center p-3 sm:p-4">
+          <div className="bg-white rounded-2xl shadow-2xl max-w-lg w-full p-4 sm:p-6 space-y-4 max-h-[90vh] overflow-y-auto animate-in zoom-in-95 duration-150">
             <div className="flex justify-between items-center border-b border-slate-100 pb-3">
               <h3 className="font-bold text-slate-900 text-sm">
                 Submit Quotation — {selectedComplaint.complaint_reference}
@@ -603,8 +603,8 @@ export const ContractorDashboard: React.FC = () => {
 
       {/* MODAL 3: Submit Completion Evidence */}
       {showCompleteModal && selectedComplaint && (
-        <div className="fixed inset-0 z-50 bg-slate-900/40 backdrop-blur-xs flex items-center justify-center p-4">
-          <div className="bg-white rounded-2xl shadow-2xl max-w-md w-full p-6 space-y-4 animate-in zoom-in-95 duration-150">
+        <div className="fixed inset-0 z-50 bg-slate-900/40 backdrop-blur-xs flex items-center justify-center p-3 sm:p-4">
+          <div className="bg-white rounded-2xl shadow-2xl max-w-md w-full p-4 sm:p-6 space-y-4 max-h-[90vh] overflow-y-auto animate-in zoom-in-95 duration-150">
             <div className="flex justify-between items-center border-b border-slate-100 pb-3">
               <h3 className="font-bold text-slate-900 text-sm">
                 Submit Completion Proof — {selectedComplaint.complaint_reference}

@@ -132,13 +132,13 @@ export const ResidentComplaintDetail: React.FC<ResidentComplaintDetailProps> = (
               The assigned contractor has finished repairs and submitted photographic proof. Please inspect your flat and confirm if the defect is completely resolved.
             </p>
           </div>
-          <div className="flex items-center space-x-2">
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 w-full sm:w-auto">
             <button
               onClick={() => {
                 setActionType('confirm');
                 setShowConfirmModal(true);
               }}
-              className="bg-white hover:bg-violet-50 text-violet-900 px-4 py-2 rounded-xl text-xs font-bold shadow-xs transition-colors"
+              className="bg-white hover:bg-violet-50 text-violet-900 px-4 py-2 rounded-xl text-xs font-bold shadow-xs transition-colors text-center"
             >
               Confirm & Close
             </button>
@@ -147,7 +147,7 @@ export const ResidentComplaintDetail: React.FC<ResidentComplaintDetailProps> = (
                 setActionType('reopen');
                 setShowConfirmModal(true);
               }}
-              className="bg-violet-800 hover:bg-violet-900 text-white px-4 py-2 rounded-xl text-xs font-semibold transition-colors border border-violet-400"
+              className="bg-violet-800 hover:bg-violet-900 text-white px-4 py-2 rounded-xl text-xs font-semibold transition-colors border border-violet-400 text-center"
             >
               Report Issue Unresolved
             </button>
@@ -273,8 +273,8 @@ export const ResidentComplaintDetail: React.FC<ResidentComplaintDetailProps> = (
 
       {/* Confirmation / Dispute Modal */}
       {showConfirmModal && (
-        <div className="fixed inset-0 z-50 bg-slate-900/40 backdrop-blur-xs flex items-center justify-center p-4">
-          <div className="bg-white rounded-2xl shadow-2xl max-w-md w-full p-6 space-y-4 animate-in zoom-in-95 duration-150">
+        <div className="fixed inset-0 z-50 bg-slate-900/40 backdrop-blur-xs flex items-center justify-center p-3 sm:p-4">
+          <div className="bg-white rounded-2xl shadow-2xl max-w-md w-full p-4 sm:p-6 space-y-4 max-h-[90vh] overflow-y-auto animate-in zoom-in-95 duration-150">
             <div className="flex justify-between items-center border-b border-slate-100 pb-3">
               <h3 className="font-bold text-slate-900 text-sm">
                 {actionType === 'confirm' ? 'Confirm Service & Close Complaint' : 'Report Issue Unresolved / Reopen'}

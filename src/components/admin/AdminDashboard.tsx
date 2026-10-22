@@ -89,7 +89,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onNavigateToTab 
   return (
     <div className="space-y-6">
       {/* Page Title & Project Filter */}
-      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 bg-white p-6 rounded-2xl border border-slate-200 shadow-xs">
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 bg-white p-4 sm:p-6 rounded-2xl border border-slate-200 shadow-xs">
         <div>
           <h1 className="text-2xl font-bold text-slate-900 tracking-tight">Executive Maintenance Overview</h1>
           <p className="text-sm text-slate-500 mt-1">
@@ -117,7 +117,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onNavigateToTab 
       </div>
 
       {/* 9 Key KPI Metric Cards */}
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 sm:gap-4">
         {/* Total */}
         <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-xs hover:border-indigo-300 transition-colors">
           <div className="flex items-center justify-between text-slate-500 text-xs font-medium">
@@ -225,17 +225,17 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onNavigateToTab 
 
       {/* Urgent Quotation Approvals Section */}
       {pendingApprovalsList.length > 0 && (
-        <div className="bg-amber-50/60 border border-amber-200 rounded-2xl p-5 shadow-xs">
-          <div className="flex items-center justify-between mb-3">
+        <div className="bg-amber-50/60 border border-amber-200 rounded-2xl p-4 sm:p-5 shadow-xs">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 mb-3">
             <div className="flex items-center space-x-2">
-              <ShieldAlert className="w-5 h-5 text-amber-700" />
+              <ShieldAlert className="w-5 h-5 text-amber-700 shrink-0" />
               <h2 className="font-bold text-amber-900 text-sm">
                 Quotations Exceeding Approval Threshold ({pendingApprovalsList.length} requiring sign-off)
               </h2>
             </div>
             <button
               onClick={() => onNavigateToTab('quotations')}
-              className="text-xs font-bold text-amber-800 hover:text-amber-950 flex items-center gap-1"
+              className="text-xs font-bold text-amber-800 hover:text-amber-950 flex items-center gap-1 shrink-0"
             >
               Go to Approval Queue <ArrowRight className="w-3.5 h-3.5" />
             </button>
